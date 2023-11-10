@@ -18,7 +18,7 @@ export default function About() {
             <div className="max-w-lg md:text-left p-2">
               <div className="font lg:leading-[1.2] text-l lg:text-xl font-bold tracking-tight">
                 <h1 className="text-xl lg:text-2xl">Afrasiab Travel</h1>{" "}
-                приглашает вас посетить Узбекистан!
+                приглашает вас посетить Узбекистан!!!
               </div>
               <p className="mt-4 text-sm">
                 Мы - опытная туристическая компания с профессиональными
