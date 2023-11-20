@@ -1,12 +1,25 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "public/logo.jpg";
-import facebookIcon from "public/facebook.svg";
-// import instagramIcon from "public/instagram.svg";
-import { AiFillInstagram, AiFillFacebook, AiFillYoutube } from "react-icons/ai";
-import { BsFillTelephoneFill, BsTelegram } from "react-icons/bs";
+import { AiFillFacebook } from "react-icons/ai";
+import { BsFillTelephoneFill } from "react-icons/bs";
+import {
+  FaVk,
+  FaTelegram,
+  FaSquareWhatsapp,
+  FaSquareInstagram,
+} from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
-import { FaTripadvisor } from "react-icons/fa";
+
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+  Box,
+} from "@mui/material";
 
 export default function Footer() {
   return (
@@ -27,16 +40,16 @@ export default function Footer() {
             <AiFillFacebook className="w-[25px] h-[25px]" />
           </Link>
           <Link href="https://www.instagram.com/turi_po_uzbekistanu/">
-            <AiFillInstagram className="w-[25px] h-[25px]" />
+            <FaSquareInstagram className="w-[25px] h-[25px]" />
           </Link>
-          {/* <Link href="/">
-            <AiFillYoutube className="w-[25px] h-[25px]" />
-          </Link> */}
-          {/* <Link href="/">
-            <FaTripadvisor className="w-[25px] h-[25px]" />
-          </Link> */}
-          <Link href="https://t.me/afrasiabtravell">
-            <BsTelegram className="w-[25px] h-[25px]" />
+          <Link href="https://t.me/afrasiab_admin">
+            <FaTelegram className="w-[25px] h-[25px]" />
+          </Link>
+          <Link href="https://vk.com/turvostok">
+            <FaVk className="w-[25px] h-[25px]" />
+          </Link>
+          <Link href="https://wa.me/998997717330">
+            <FaSquareWhatsapp className="w-[25px] h-[25px]" />
           </Link>
         </div>
       </div>
@@ -86,24 +99,76 @@ export default function Footer() {
             </div>
           </div>
           <div className="flex flex-col space-y-2">
-            <h4 className="text-base font-bold">Новости</h4>
+            <h4 className="text-base font-bold">Связаться?</h4>
             <p className="text-sm">
-              Хотите получать новости о новых публикациях ?
+              Если хотите, чтобы мы связались с Вами, то оставьте номер телефона
             </p>
             <form>
               <div className="relative">
-                <input
-                  id="default-search"
-                  className="block w-full p-4 text-sm border-2 border-darkBlue rounded-lg focus:ring-darkBlue focus:border-darkBlue"
-                  placeholder="Введите свой email"
-                  required
-                />
-                <button
+                <FormControl>
+                  {/* <FormLabel id="demo-radio-buttons-group-label">
+                    Gender
+                  </FormLabel> */}
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="tg"
+                    name="radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      value="tg"
+                      control={<Radio />}
+                      label="Telegram"
+                    />
+                    <FormControlLabel
+                      value="wa"
+                      control={<Radio color="success" />}
+                      label="Whatsapp"
+                    />
+                  </RadioGroup>
+                </FormControl>
+                <Box
+                  component={"form"}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    // gap: 1,
+                  }}
+                >
+                  <TextField
+                    id="name-input"
+                    label="Ваше имя"
+                    variant="outlined"
+                    type="text"
+                  />
+                  <TextField
+                    id="phone-input"
+                    label="Номер телефона"
+                    variant="outlined"
+                    margin="dense"
+                    type="tel"
+                  />
+                </Box>
+                {/* <input
+                    id="default-search"
+                    className="block w-auto p-4 text-sm border-2 border-darkBlue rounded-lg focus:ring-darkBlue focus:border-darkBlue"
+                    placeholder="Введите номер телефона"
+                    required
+                    type="tel"
+                  />
+                  <input
+                    id="default-search"
+                    className="block w-auto p-4 text-sm border-2 border-darkBlue rounded-lg focus:ring-darkBlue focus:border-darkBlue"
+                    placeholder="Введите номер телефона"
+                    required
+                    type="tel"
+                  /> */}
+                {/* <button
                   type="submit"
                   className="text-white absolute right-2.5 bottom-2.5 bg-yellow hover:bg-darkYellow focus:ring-4 focus:outline-none focus:ring-darkBlue font-medium rounded-lg text-sm px-3 py-2"
                 >
                   Отправить
-                </button>
+                </button> */}
               </div>
             </form>
           </div>

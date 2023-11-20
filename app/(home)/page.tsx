@@ -35,7 +35,7 @@ export default function Home() {
               О НАС
             </div>
             <h1 className="leading-tight lg:text-2xl text-xl text-darkBlue font-bold mb-5">
-              Наш план тура - исполнить желание вашей мечты
+              За организацию Вашего тура мы отвечаем головой
             </h1>
             <div className="text-base">
               Добро пожаловать в мир путешествий и приключений, где мы открываем
@@ -68,7 +68,7 @@ export default function Home() {
             АВТОРСКИЕ ТУРЫ
           </div>
           <h1 className="leading-tight text-xl lg:text-2xl text-darkBlue font-bold mb-5">
-            Удивительные места по всему Узбекистану
+            Программы наших туров
           </h1>
           <div>
             {/* <Carousel /> //!not needed */}
@@ -92,7 +92,7 @@ export default function Home() {
           </h1>
           <SwiperReviews />
           <h1 className="leading-tight mt-8 text-xl lg:text-2xl text-darkBlue font-bold ">
-            История городов Узбекистана
+            Достопримечательности Узбекистана
           </h1>
           <button className="mb-6 transition w-[300px] text-white ease-in-out delay-150 shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-yellow hover:bg-darkYellow py-2 px-4 rounded-full mt-8">
             <Link href="/cities">
