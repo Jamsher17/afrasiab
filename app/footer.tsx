@@ -1,6 +1,13 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+
+import { useState, FormEvent } from "react";
+
+//assets
 import Logo from "public/logo.jpg";
+
+//icons
 import { AiFillFacebook } from "react-icons/ai";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import {
@@ -11,17 +18,57 @@ import {
 } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 
+//material ui
 import {
   FormControl,
   FormControlLabel,
-  FormLabel,
   Radio,
   RadioGroup,
   TextField,
   Box,
+  Button,
 } from "@mui/material";
 
+type FormData = {
+  name: string;
+  message: string;
+  contactMethod: string;
+};
+
 export default function Footer() {
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    message: "",
+    contactMethod: "t",
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch("/api/sendMail", {
+        method: "post",
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        console.log("falling over");
+        throw new Error(`response status: ${response.status}`);
+      }
+      const responseData = await response.json();
+      console.log(responseData["message"]);
+
+      alert("Message successfully sent");
+    } catch (err) {
+      console.error(err);
+      alert("Error, please try resubmitting the form");
+    }
+  };
+
   return (
     <div className="lg:px-[8%] lg:py-[4%] p-[4%] flex align-center flex-col lg:flex-row lg:space-x-12 drop-shadow-[0px_4px_10px_rgba(255,255,255,0.3)]">
       <div className="flex flex-col grow-0 space-y-4">
@@ -103,73 +150,53 @@ export default function Footer() {
             <p className="text-sm">
               Если хотите, чтобы мы связались с Вами, то оставьте номер телефона
             </p>
-            <form>
-              <div className="relative">
-                <FormControl>
-                  {/* <FormLabel id="demo-radio-buttons-group-label">
-                    Gender
-                  </FormLabel> */}
-                  <RadioGroup
-                    row
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="tg"
-                    name="radio-buttons-group"
-                  >
-                    <FormControlLabel
-                      value="tg"
-                      control={<Radio />}
-                      label="Telegram"
-                    />
-                    <FormControlLabel
-                      value="wa"
-                      control={<Radio color="success" />}
-                      label="Whatsapp"
-                    />
-                  </RadioGroup>
-                </FormControl>
-                <Box
-                  component={"form"}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    // gap: 1,
-                  }}
-                >
-                  <TextField
-                    id="name-input"
-                    label="Ваше имя"
-                    variant="outlined"
-                    type="text"
-                  />
-                  <TextField
-                    id="phone-input"
-                    label="Номер телефона"
-                    variant="outlined"
-                    margin="dense"
-                    type="tel"
-                  />
-                </Box>
-                {/* <input
-                    id="default-search"
-                    className="block w-auto p-4 text-sm border-2 border-darkBlue rounded-lg focus:ring-darkBlue focus:border-darkBlue"
-                    placeholder="Введите номер телефона"
-                    required
-                    type="tel"
-                  />
-                  <input
-                    id="default-search"
-                    className="block w-auto p-4 text-sm border-2 border-darkBlue rounded-lg focus:ring-darkBlue focus:border-darkBlue"
-                    placeholder="Введите номер телефона"
-                    required
-                    type="tel"
-                  /> */}
-                {/* <button
-                  type="submit"
-                  className="text-white absolute right-2.5 bottom-2.5 bg-yellow hover:bg-darkYellow focus:ring-4 focus:outline-none focus:ring-darkBlue font-medium rounded-lg text-sm px-3 py-2"
-                >
-                  Отправить
-                </button> */}
+            <form onSubmit={handleSubmit}>
+              <RadioGroup
+                row
+                aria-labelledby="demo-radio-buttons-group-label"
+                defaultValue="t"
+                name="radio-buttons-group"
+                onChange={handleChange}
+              >
+                <FormControlLabel
+                  control={<Radio />}
+                  label="Telegram"
+                  value={"t"}
+                />
+
+                <FormControlLabel
+                  control={<Radio color="success" />}
+                  label="WhatsApp"
+                  value={"wa"}
+                />
+              </RadioGroup>
+              <div className="flex flex-col">
+                <TextField
+                  id="name-input"
+                  label="Ваше имя"
+                  variant="outlined"
+                  type="text"
+                  name="name"
+                  onChange={handleChange}
+                />
+                <TextField
+                  id="phone-input"
+                  label="Номер телефона"
+                  variant="outlined"
+                  margin="dense"
+                  type="tel"
+                  name="message"
+                  onChange={handleChange}
+                />
               </div>
+              <Button
+                variant="outlined"
+                type="submit"
+                size="large"
+                color="primary"
+              >
+                ОТПРАВИТЬ
+              </Button>
             </form>
           </div>
         </div>
