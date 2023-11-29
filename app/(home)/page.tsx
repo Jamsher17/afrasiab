@@ -20,8 +20,8 @@ export default function Home() {
           <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:text-3xl text-l">
             ВМЕСТЕ С НАМИ
           </span>
-          <button className="transition ease-in-out delay-150 shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-yellow hover:bg-darkYellow py-3 px-6 rounded-full mt-8">
-            <p className="text-base">Бронировать</p>
+          <button className="transition ease-in-out delay-150 shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-yellow hover:bg-darkYellow py-3 px-6 rounded-full mt-8 border-[1px] border-white">
+            <p className="text-base font-thin">Бронировать</p>
           </button>
         </h1>
       </div>
@@ -34,7 +34,7 @@ export default function Home() {
             <div className="lg:text-base text-sm text-yellow font-bold">
               О НАС
             </div>
-            <h1 className="leading-tight lg:text-2xl text-xl text-darkBlue font-bold mb-5">
+            <h1 className="leading-tight lg:text-2xl text-m text-darkBlue font-bold mb-5">
               За организацию Вашего тура мы отвечаем головой
             </h1>
             <div className="text-base">
@@ -67,7 +67,7 @@ export default function Home() {
           <div className="text-sm lg:text-base text-yellow font-bold">
             АВТОРСКИЕ ТУРЫ
           </div>
-          <h1 className="leading-tight text-xl lg:text-2xl text-darkBlue font-bold mb-5">
+          <h1 className="leading-tight text-l lg:text-2xl text-darkBlue font-bold mb-5">
             Программы наших туров
           </h1>
           <div>
@@ -87,18 +87,16 @@ export default function Home() {
           <div className="text-sm lg:text-base text-yellow font-bold">
             ОТЗЫВЫ
           </div>
-          <h1 className="text-xl leading-tight lg:text-2xl text-darkBlue font-bold mb-5">
+          <h1 className="text-m leading-tight lg:text-2xl text-darkBlue font-bold mb-5">
             Довольные клиенты по всему миру
           </h1>
           <SwiperReviews />
-          <h1 className="leading-tight mt-8 text-xl lg:text-2xl text-darkBlue font-bold ">
+          <h1 className="leading-tight mt-8 text-m lg:text-2xl text-darkBlue font-bold ">
             Достопримечательности Узбекистана
           </h1>
-          <button className="mb-6 transition w-[300px] text-white ease-in-out delay-150 shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-yellow hover:bg-darkYellow py-2 px-4 rounded-full mt-8">
+          <button className="mb-6 transition w-[250px] text-white ease-in-out delay-150 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] bg-yellow hover:bg-darkYellow py-2 px-4 rounded-full mt-8 border-white border-[1px]">
             <Link href="/cities">
-              <p className="text-base p-2 drop-shadow-[0px_4px_1px_rgba(0,0,0,0.1)]">
-                Просмотреть все
-              </p>
+              <p className="text-base p-2 ">Просмотреть все</p>
             </Link>
           </button>
           <div className="flex flex-wrap gap-4 justify-center">
