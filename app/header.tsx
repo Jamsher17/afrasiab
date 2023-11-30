@@ -15,11 +15,7 @@ export function Header() {
     <nav className="fixed w-full z-10 bg-white text-sm px-4 lg:px-6 py-2.5 ">
       <div className="flex justify-between items-center mx-auto">
         <Link href="/" className="flex basis-1/3 items-center">
-          <Image
-            src={Logo}
-            className="mr-3 w-[80px] md:w-[110px]"
-            alt="Logo"
-          />
+          <Image src={Logo} className="mr-3 w-[80px] md:w-[110px]" alt="Logo" />
         </Link>
         <div className="flex items-center lg:hidden z-1">
           <PopMenu />

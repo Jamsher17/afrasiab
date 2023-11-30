@@ -8,10 +8,20 @@ export async function POST(request) {
   const password = process.env.MAIL_PASSWORD;
   const myEmail = process.env.MAIL_ADDRESS;
 
-  const { name, message, contactMethod } = await request.json();
+  const body = await request.json();
+  const name = body.name;
+  const source = body.source;
+  const phone = body.phone;
+  var method = "";
+  var tourName = "";
+  var link = "";
 
-  const method = contactMethod == "t" ? "Telegram" : "WhatsApp";
-  const link = `https://${contactMethod}.me/${message}`;
+  if (source == "footer") {
+    method = body.contactMethod == "t" ? "Telegram" : "WhatsApp";
+    link = `https://${contactMethod}.me/${phone}`;
+  } else {
+    tourName = body.tourName;
+  }
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -30,7 +40,9 @@ export async function POST(request) {
         "info@afrasiab-travel.com",
       ],
       subject: `Afrasiab Travel: Новый запрос от ${name}`,
-      text: `${name} просит Afrasiab Travel связаться через ${method}.
+      text:
+        source == "footer"
+          ? `${name} просит Afrasiab Travel связаться через ${method}.
 
         ДАННЫЕ
         Имя: ${name}
@@ -39,7 +51,10 @@ export async function POST(request) {
         ЕСЛИ ВСЕ ДАННЫЕ ВВЕДЕНЫ ПРАВИЛЬНО МОЖЕТЕ ИСПОЛЬЗОВАТЬ СЛЕДУЮЩУЮ ССЫЛКУ:
         ${link}
         
-        В ином случае свяжитесь вручную`,
+        В ином случае свяжитесь вручную`
+          : `
+          ${name} оставил заявку на тур "${tourName}"
+          Номер телефона: ${phone}.`,
     });
 
     return NextResponse.json({ message: "Success: email was sent" });

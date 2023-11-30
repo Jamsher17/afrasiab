@@ -2,7 +2,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { useState, FormEvent } from "react";
+import { useState } from "react";
+
+//service
+import { handleSubmit } from "./service/sendMail";
 
 //assets
 import Logo from "public/logo.jpg";
@@ -31,42 +34,21 @@ import {
 
 type FormData = {
   name: string;
-  message: string;
+  phone: string;
   contactMethod: string;
+  source: string;
 };
 
 export default function Footer() {
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    message: "",
+    phone: "",
     contactMethod: "t",
+    source: "footer",
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
-
-  const handleSubmit = async (event: FormEvent) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch("/api/sendMail", {
-        method: "post",
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        console.log("falling over");
-        throw new Error(`response status: ${response.status}`);
-      }
-      const responseData = await response.json();
-      console.log(responseData["message"]);
-
-      alert("Message successfully sent");
-    } catch (err) {
-      console.error(err);
-      alert("Error, please try resubmitting the form");
-    }
   };
 
   return (
@@ -102,7 +84,7 @@ export default function Footer() {
       </div>
       <div className="grow lg:flex justify-between">
         <div className="grow lg:flex justify-between">
-          <div className="flex flex-col">
+          <div className="flex flex-col mt-6 lg:mt-0">
             <h4 className="text-base font-bold">Навигация</h4>
             <div className="hidden md:flex flex-col lg:flex-col sm:flex-row lg:space-y-2 mt-2 justify-between">
               <Link href="/">Главная</Link>
@@ -145,12 +127,12 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col space-y-2">
+          <div className="flex flex-col space-y-2 mt-6 lg:mt-0">
             <h4 className="text-base font-bold">Связаться?</h4>
             <p className="text-sm">
               Если хотите, чтобы мы связались с Вами, то оставьте номер телефона
             </p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e, formData)}>
               <RadioGroup
                 row
                 aria-labelledby="demo-radio-buttons-group-label"
@@ -185,7 +167,7 @@ export default function Footer() {
                   variant="outlined"
                   margin="dense"
                   type="tel"
-                  name="message"
+                  name="phone"
                   onChange={handleChange}
                 />
               </div>

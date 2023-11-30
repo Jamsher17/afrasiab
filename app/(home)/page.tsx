@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Images from "public/Images.png";
 import { Cities, tours } from "../data/data";
@@ -5,23 +6,54 @@ import SwiperReviews from "./carousel/swiperReviews";
 import Link from "next/link";
 import TourCard from "../components/TourCard";
 import CityCard from "../components/CityCard";
+import "../globals.css";
+import { useState } from "react";
+import { IoCloseSharp } from "react-icons/io5";
+import { TextField, Button } from "@mui/material";
+import { handleSubmit } from "../service/sendMail";
+
+type FormData = {
+  name: string;
+  phone: string;
+  tourName: string;
+  source: string;
+};
 
 export default function Home() {
+  const [showModal, setShowModal] = useState<boolean>(false);
+
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    phone: "",
+    tourName: "",
+    source: "request modal",
+  });
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
   return (
     <>
-      <div className="w-full lg:h-screen h-[65vh] bg-[url('../public/hero-comp.jpg')] bg-cover bg-center flex justify-center items-center">
-        <h1 className="font-bold flex flex-col items-center text-white">
+      <div className=" w-full lg:h-screen h-[55vh] relative flex flex-col justify-center items-center overflow-hidden">
+        <div className="background-image w-full h-full relative bg-[url('../public/samarkand-big.svg')] "></div>
+        <h1 className="h-full font-bold flex flex-col items-center text-white absolute justify-center ">
           <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:text-3xl text-l">
             ИССЛЕДУЙТЕ
           </span>
-          <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:p-5 lg:text-6xl text-2xl lg:leading-[85%]">
+          <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,1)] lg:p-5 lg:text-6xl text-[55px] lg:leading-[85%] text-yellow">
             УЗБЕКИСТАН
           </span>
           <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:text-3xl text-l">
             ВМЕСТЕ С НАМИ
           </span>
-          <button className="transition ease-in-out delay-150 shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-yellow hover:bg-darkYellow py-3 px-6 rounded-full mt-8 border-[1px] border-white">
-            <p className="text-base font-thin">Бронировать</p>
+          <button
+            onClick={() => setShowModal(true)}
+            className="mt-10 lg:mb-14 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-darkBlue bg-opacity-50 hover:bg-opacity-70 border-white border-[1px] px-6 py-3 rounded-md transition ease-in-out delay-150"
+          >
+            <p className="text-base font-thin lg:text-l text-white">
+              Бронировать
+            </p>
           </button>
         </h1>
       </div>
@@ -94,7 +126,7 @@ export default function Home() {
           <h1 className="leading-tight mt-8 text-m lg:text-2xl text-darkBlue font-bold ">
             Достопримечательности Узбекистана
           </h1>
-          <button className="mb-6 transition w-[250px] text-white ease-in-out delay-150 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] bg-yellow hover:bg-darkYellow py-2 px-4 rounded-full mt-8 border-white border-[1px]">
+          <button className="mb-8 mt-8 transition w-[250px] text-white ease-in-out delay-150 shadow-[0px_4px_4px_rgba(0,0,0,0.25)] bg-yellow hover:bg-darkBlue hover:bg-opacity-50 py-2 px-4 rounded-full  border-white border-[1px]">
             <Link href="/cities">
               <p className="text-base p-2 ">Просмотреть все</p>
             </Link>
@@ -106,6 +138,51 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {showModal && (
+        <div className="bg-darkBlue bg-opacity-50 fixed h-full w-full flex top-0 z-20 items-center justify-center">
+          <div className="bg-white rounded-md w-3/4 h-[55%] lg:h-[60%] relative ">
+            <IoCloseSharp
+              color="#112B3C"
+              size={25}
+              className="absolute top-2 right-2"
+              onClick={() => setShowModal(false)}
+            />
+
+            <form
+              onSubmit={(e) => handleSubmit(e, formData)}
+              className="flex flex-col w-full h-full items-center justify-center gap-4 rounded-md "
+            >
+              <h1 className="text-m text-yellow">ЗАЯВКА</h1>
+              <TextField
+                name="name"
+                label={"Ваше имя   "}
+                className="w-[75%]"
+                onChange={handleChange}
+              />
+              <TextField
+                name="phone"
+                label={"Ваш номер телефона"}
+                className="w-[75%]"
+                onChange={handleChange}
+              />
+              <TextField
+                name="tourName"
+                label={"Название тура"}
+                className="w-[75%]"
+                onChange={handleChange}
+              />
+              <button
+                type="submit"
+                className="bg-darkBlue w-[75%] h-12 lg:h-14 rounded-md"
+              >
+                <h1 className="text-white text-base font-bold">
+                  Отправить заявку
+                </h1>
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }

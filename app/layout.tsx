@@ -26,9 +26,9 @@ export default function RootLayout({
       <body className="text-darkBlue">
         <main className={ubuntu.className}>
           <Header />
-          <ScrollToTop/>
+          <ScrollToTop />
           {/* <ErrorBoundary fallback={<Error />}> */}
-            <main className="bg-[#F6F6F6] pt-[75px]">{children}</main>
+          <main className="bg-[#F6F6F6] pt-[75px]">{children}</main>
           {/* </ErrorBoundary> */}
           <Footer />
         </main>
