@@ -28,7 +28,7 @@ export default function RootLayout({
           <Header />
           <ScrollToTop />
           {/* <ErrorBoundary fallback={<Error />}> */}
-          <main className="bg-[#F6F6F6] pt-[75px]">{children}</main>
+          <main className="bg-[#F6F6F6]">{children}</main>
           {/* </ErrorBoundary> */}
           <Footer />
         </main>

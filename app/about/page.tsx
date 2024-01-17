@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Image1 from "public/mausoleum.jpg";
 import Image2 from "public/samarkand.jpg";
@@ -7,9 +8,12 @@ import Image5 from "public/bazaar.jpg";
 import Bukhara from "public/bukhara.jpg";
 import Tashkent from "public/tashkent.jpg";
 import Hiva from "public/mosque.jpg";
-import BasicCard from "@/app/components/BasicCard";
+import { useState } from "react";
+import ContactModal from "../components/ContactModal";
 
 export default function About() {
+  const [showModal, setShowModal] = useState<boolean>(false);
+
   return (
     <>
       <div className="relative overflow-hidden ">
@@ -26,7 +30,10 @@ export default function About() {
                 все исторические регионы Узбекистана и гарантируем незабываемые
                 впечатления и уникальный опыт путешествия в Узбекистан!.
               </p>
-              <button className="text-white w-full md:w-auto transition ease-in-out delay-150 shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-yellow hover:bg-darkYellow py-2 px-4 rounded-full mt-8">
+              <button
+                onClick={() => setShowModal(true)}
+                className="text-white w-full md:w-auto transition ease-in-out delay-150 shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-yellow hover:bg-darkYellow py-2 px-4 rounded-full mt-8"
+              >
                 <p className="text-base font-bold p-2 drop-shadow-[0px_4px_1px_rgba(0,0,0,0.1)]">
                   Бронировать
                 </p>
@@ -173,6 +180,7 @@ export default function About() {
           </div>
         </div>
       </div>
+      {showModal && <ContactModal onClose={() => setShowModal(false)} />}
     </>
   );
 }

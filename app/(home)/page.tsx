@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Images from "public/Images.png";
-import { Cities, tours } from "../data/data";
+import { Cities, tours, tours_ } from "../data/data";
 import SwiperReviews from "./carousel/swiperReviews";
 import Link from "next/link";
 import TourCard from "../components/TourCard";
@@ -11,6 +11,7 @@ import { useState } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { TextField, Button } from "@mui/material";
 import { handleSubmit } from "../service/sendMail";
+import ContactModal from "../components/ContactModal";
 
 type FormData = {
   name: string;
@@ -21,17 +22,7 @@ type FormData = {
 
 export default function Home() {
   const [showModal, setShowModal] = useState<boolean>(false);
-
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    phone: "",
-    tourName: "",
-    source: "request modal",
-  });
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
-  };
+  const onClose = () => setShowModal(false);
 
   return (
     <>
@@ -106,7 +97,7 @@ export default function Home() {
             {/* <Carousel /> //!not needed */}
             <div className="flex justify-center">
               <div className="justify-items-center grid-center text-darkBlue grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
-                {tours.map((tour) => (
+                {tours_.map((tour) => (
                   <div className="m-4">
                     <TourCard key={`key-${tour.id}`} {...tour} />
                   </div>
@@ -138,51 +129,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {showModal && (
-        <div className="bg-darkBlue bg-opacity-50 fixed h-full w-full flex top-0 z-20 items-center justify-center">
-          <div className="bg-white rounded-md w-3/4 h-[55%] lg:h-[60%] relative ">
-            <IoCloseSharp
-              color="#112B3C"
-              size={25}
-              className="absolute top-2 right-2"
-              onClick={() => setShowModal(false)}
-            />
-
-            <form
-              onSubmit={(e) => handleSubmit(e, formData)}
-              className="flex flex-col w-full h-full items-center justify-center gap-4 rounded-md "
-            >
-              <h1 className="text-m text-yellow">ЗАЯВКА</h1>
-              <TextField
-                name="name"
-                label={"Ваше имя   "}
-                className="w-[75%]"
-                onChange={handleChange}
-              />
-              <TextField
-                name="phone"
-                label={"Ваш номер телефона"}
-                className="w-[75%]"
-                onChange={handleChange}
-              />
-              <TextField
-                name="tourName"
-                label={"Название тура"}
-                className="w-[75%]"
-                onChange={handleChange}
-              />
-              <button
-                type="submit"
-                className="bg-darkBlue w-[75%] h-12 lg:h-14 rounded-md"
-              >
-                <h1 className="text-white text-base font-bold">
-                  Отправить заявку
-                </h1>
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
+      {showModal && <ContactModal onClose={onClose} />}
     </>
   );
 }
