@@ -1,13 +1,11 @@
 "use client";
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
-import ReactMarkdown from "react-markdown";
+import { Tab } from "@headlessui/react";
+import Markdown from "react-markdown";
 import { Gallery } from "react-grid-gallery";
+
+function classNames(...classes: any) {
+  return classes.filter(Boolean).join(" ");
+}
 
 interface BasicTabsProps {
   tabs: {
@@ -18,73 +16,37 @@ interface BasicTabsProps {
 }
 
 export default function BasicTabs({ tabs }: BasicTabsProps) {
-  const data = [
-    {
-      label: "Общая Информация",
-      value: "html",
-      desc: `Самарканд – один из древнейших и наиболее известных городов Средней Азии, который был основан в VI-V веках до нашей эры. В течение всех своих исторических этапов он играл ключевую роль в культурной и политической жизни региона. Самарканд – это древнее культурное наследие плодородной долины реки Зарафшан, где сохранились уникальные архитектурные сооружения, которые были построены в эпоху монгольского государства и империи Тамерлана. Бухара - один из самых древних и красивых городов в Узбекистане. Он расположен в середине страны, на границе с Казахстаном и Туркменистаном. Город прославился своими старинными архитектурными памятниками, многие из которых датируются средневековьем.`,
-    },
-    {
-      label: "Программа тура",
-      value: "react",
-      desc: `День 1: Прибытие в Самарканд
-
-      Ваш гид встретит вас в аэропорту и сопроводит вас в отель. После размещения вы отправитесь на обзорную экскурсию по Самарканду.
-      
-      - Регистан (центр города, состоящий из трех медресе, построенных в XVII веке)
-      - Мечеть Биби-Ханым (мечеть, построенная в честь жены Тамерлана, в которой находится самый большой зал в Средней Азии)
-      - Руины замка Афросиаб (имперское селение, которое было уничтожено в начале XIII века)
-      
-      День 2: Самарканд
-      
-      - Мавзолей Гур-Эмир (гробница Тамерлана и его потомков)
-      - Успенский собор (бывшая мечеть, построенная в честь святой мученицы Фомы и приобретшая статус кафедрального собора в 19 веке)
-      - Мечеть Ходжа Ахмада Ясави (мечеть, которая была признана объектом Всемирного наследия ЮНЕСКО)
-      - Базар Сиаб (самый большой рынок Самарканда)
-      - Шахи-Зинда (мавзолеи, находящиеся на холме и посвященные родственникам Тамерлана)
-      
-      День 3: Самарканд
-      
-      - Обсерватория Улугбека (мастерские математика Улугбека взорвали на 2 века вперед современные научные разработки)
-      - Крепость Ак-Сарай (крепость, построенная в XIV веке. Сегодня можно увидеть лишь ее разрушенные стены)
-      - Мечеть Хазрет-Хизир (мусульманская мечеть, посвященная святому азрату Хизиру)
-      
-      День 4: Выезд из Самарканда
-      
-      В последний день ваш гид доставит вас в аэропорт, чтобы вы могли приступить к путешествию домой.
-      `,
-    },
-    {
-      label: "Галерея",
-      value: "vue",
-      desc: `Тут будут фотографии.`,
-    },
-    {
-      label: "Забронировать Тур",
-      value: "angular",
-      desc: `Форма для бронирования тура онлайн`,
-    },
-  ];
-
   return (
-    <Tabs value="about" className="mt-2 z-0">
-      <TabsHeader className="z-0 flex flex-col lg:flex-row flex-wrap">
-        {tabs?.map(({ label, value }) => (
-          <Tab className="text-sm w-auto mr-4 p-2" key={value} value={value}>
-            {label}
-          </Tab>
-        ))}
-      </TabsHeader>
-      <TabsBody>
-        {tabs?.map(({ value, desc }) => (
-          <TabPanel key={value} value={value}>
-            <div className="text-base sm:text-sm whitespace-pre-wrap ">
-              {typeof desc == "string" && <ReactMarkdown children={desc} />}
-              {typeof desc == "object" && <Gallery images={desc} />}
-            </div>
-          </TabPanel>
-        ))}
-      </TabsBody>
-    </Tabs>
+    <>
+      <Tab.Group>
+        <Tab.List className="mt-4 flex flex-col xl:flex-row rounded-xl gap-1 xl:justify-evenly">
+          {Object.values(tabs).map((tab) => (
+            <Tab
+              key={tab.value}
+              className={({ selected }) =>
+                classNames(
+                  "flex w-full xl:h-14 rounded-lg py-3 px-4 text-sm xl:text-[1.25rem] font-medium leading-5 shadow-md",
+                  "ring-white/60 ring-offset-2 ring-offset-orange-200 focus:outline-none focus:ring-2",
+                  "items-center justify-center whitespace-nowrap",
+                  selected
+                    ? "bg-yellow text-white"
+                    : "bg-white text-blue-100 hover:bg-darkBlue hover:text-white border"
+                )
+              }
+            >
+              {tab.label}
+            </Tab>
+          ))}
+        </Tab.List>
+        <Tab.Panels>
+          {Object.values(tabs).map((tab) => (
+            <Tab.Panel className="font-medium text-sm xl:text-[1.25rem] text-center py-4 xl:px-6 rounded-xl my-4 h-full w-full whitespace-pre-line">
+              {typeof tab.desc == "string" && <Markdown children={tab.desc} />}
+              {typeof tab.desc == "object" && <Gallery images={tab.desc} />}
+            </Tab.Panel>
+          ))}
+        </Tab.Panels>
+      </Tab.Group>
+    </>
   );
 }

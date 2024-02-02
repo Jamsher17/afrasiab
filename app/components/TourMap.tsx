@@ -11,8 +11,6 @@ import { AiOutlineDollar } from "react-icons/ai";
 import { FaRegThumbsUp } from "react-icons/fa";
 import { MdNightlightRound } from "react-icons/md";
 
-//data
-import { tours_ } from "../data/data";
 //assets
 import Markdown from "react-markdown";
 
