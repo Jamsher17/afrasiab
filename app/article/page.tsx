@@ -12,7 +12,7 @@ export default function Article() {
     duration: "7 дней / 6 ночей",
     image: Image1,
   };
-  
+
   return (
     <>
       <div
@@ -23,8 +23,8 @@ export default function Article() {
         </span>
       </div>
       <div className="lg:mx-[8%] lg:text-start m-[4%] text-center ">
-      <BasicCard {...data}/>
-    </div>
+        <BasicCard {...data} />
+      </div>
     </>
   );
 }

@@ -20,7 +20,7 @@ export default function BasicTabs({ tabs }: BasicTabsProps) {
     <>
       <Tab.Group>
         <Tab.List className="mt-4 flex flex-col xl:flex-row rounded-xl gap-1 xl:justify-evenly">
-          {Object.values(tabs).map((tab) => (
+          {tabs.map((tab) => (
             <Tab
               key={tab.value}
               className={({ selected }) =>
@@ -39,7 +39,7 @@ export default function BasicTabs({ tabs }: BasicTabsProps) {
           ))}
         </Tab.List>
         <Tab.Panels>
-          {Object.values(tabs).map((tab) => (
+          {tabs.map((tab) => (
             <Tab.Panel className="font-medium text-sm xl:text-[1.25rem] text-center py-4 xl:px-6 rounded-xl my-4 h-full w-full whitespace-pre-line">
               {typeof tab.desc == "string" && <Markdown children={tab.desc} />}
               {typeof tab.desc == "object" && <Gallery images={tab.desc} />}
