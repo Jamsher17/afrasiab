@@ -40,7 +40,10 @@ export default function BasicTabs({ tabs }: BasicTabsProps) {
         </Tab.List>
         <Tab.Panels>
           {tabs.map((tab) => (
-            <Tab.Panel className="font-medium text-sm xl:text-[1.25rem] text-center py-4 xl:px-6 rounded-xl my-4 h-full w-full whitespace-pre-line">
+            <Tab.Panel
+              key={tab.value}
+              className="font-medium text-sm xl:text-[1.25rem] text-center py-4 xl:px-6 rounded-xl my-4 h-full w-full whitespace-pre-line"
+            >
               {typeof tab.desc == "string" && <Markdown children={tab.desc} />}
               {typeof tab.desc == "object" && <Gallery images={tab.desc} />}
             </Tab.Panel>
