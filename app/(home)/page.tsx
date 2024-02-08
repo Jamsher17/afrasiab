@@ -32,7 +32,7 @@ export default function Home() {
           <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:text-3xl text-l">
             ИССЛЕДУЙТЕ
           </span>
-          <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.75)] lg:p-5 lg:text-6xl text-[55px] lg:leading-[85%] text-yellow">
+          <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.75)] lg:p-5 lg:text-6xl text-[50px] lg:leading-[85%] text-yellow">
             УЗБЕКИСТАН
           </span>
           <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:text-3xl text-l">
