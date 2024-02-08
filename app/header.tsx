@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 //local imports
-import Logo from "public/logo.jpg";
+import Logo from "public/logo_alt.png";
 import { PopMenu } from "./components/Popupmenu";
 import HeaderInfo from "./components/HeaderInfo";
 
@@ -13,15 +13,16 @@ export function Header() {
 
   return (
     <nav className="sticky w-full z-10 bg-white text-sm px-4 lg:px-6 py-2.5 ">
-      <div className="flex justify-between items-center mx-auto">
-        <Link href="/" className="flex basis-1/3 items-center">
-          <Image src={Logo} className="mr-3 w-[80px] md:w-[110px]" alt="Logo" />
-        </Link>
-        <div className="flex items-center lg:hidden z-1">
+      <div className="flex items-center mx-auto justify-between">
+        <div className="flex items-center lg:hidden z-1 absolute left-0">
           <PopMenu />
         </div>
+        <Link href="/" className="flex flex-1 items-center justify-center">
+          <Image src={Logo} className="h-[50px] w-auto" alt="Logo" />
+        </Link>
+
         <div
-          className="hidden basis-1 justify-between items-center w-full ml-30 lg:flex lg:w-auto lg:order-1"
+          className="hidden flex-1 justify-between items-center w-full ml-30 lg:flex lg:w-auto lg:order-1"
           id="mobile-menu-2"
         >
           <ul className="flex flex-col mt-4 min-w-[390px] lg:flex-row lg:space-x-8 lg:mt-0">
@@ -37,10 +38,10 @@ export function Header() {
                       }
                     : {}
                 }
-                className="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
+                className="block py-2 pr-4 pl-3 font-bold  text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
                 aria-current="page"
               >
-                Главная
+                ГЛАВНАЯ
               </Link>
             </li>
             <li>
@@ -55,9 +56,9 @@ export function Header() {
                       }
                     : {}
                 }
-                className="block whitespace-nowrap hover:text-darkBlue  py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
+                className="block whitespace-nowrap font-bold  hover:text-darkBlue  py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
               >
-                О нас
+                О НАС
               </Link>
             </li>
             <li>
@@ -72,9 +73,9 @@ export function Header() {
                       }
                     : {}
                 }
-                className="block whitespace-nowrap hover:text-darkBlue py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
+                className="block whitespace-nowrap font-bold  hover:text-darkBlue py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
               >
-                Авторские Туры
+                АВТОРСКИЕ ТУРЫ
               </Link>
             </li>
             <li>
@@ -89,9 +90,9 @@ export function Header() {
                       }
                     : {}
                 }
-                className="block hover:text-darkBlue py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
+                className="block hover:text-darkBlue font-bold py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
               >
-                Города
+                ГОРОДА
               </Link>
             </li>
             {/* <li>
@@ -123,15 +124,15 @@ export function Header() {
                       }
                     : {}
                 }
-                className="block hover:text-darkBlue py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
+                className="block hover:text-darkBlue font-bold py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
               >
-                Контакты
+                КОНТАКТЫ
               </Link>
             </li>
           </ul>
         </div>
         <div
-          className="hidden basis-1/3 lg:flex items-center w-auto justify-end lg:order-1"
+          className="hidden flex-1 lg:flex items-center w-auto justify-end lg:order-1"
           id="mobile-menu-2"
         >
           <HeaderInfo />

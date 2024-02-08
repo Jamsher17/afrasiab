@@ -6,6 +6,9 @@ import USD from "public/USD.svg";
 import { useEffect, useState } from "react";
 import { useCurrentTime } from "../hooks/currentTime";
 import { usePathname } from "next/navigation";
+import { FaRegClock } from "react-icons/fa";
+import { TiWeatherPartlySunny } from "react-icons/ti";
+import { HiOutlineCurrencyDollar } from "react-icons/hi";
 
 export default function HeaderInfo() {
   const [weather, setWeather] = useState<number>(15);
@@ -14,9 +17,7 @@ export default function HeaderInfo() {
   const path = usePathname();
 
   useEffect(() => {
-    fetch(
-      "/api/weather"
-    )
+    fetch("/api/weather")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -31,7 +32,7 @@ export default function HeaderInfo() {
   }, []);
 
   useEffect(() => {
-    fetch('/api/exchange-rate')
+    fetch("/api/exchange-rate")
       .then((res) => res.json())
       .then((data) => setCurrency(data.result))
       .catch((error) => console.error("error", error));
@@ -39,19 +40,21 @@ export default function HeaderInfo() {
 
   return (
     <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-      <li className="flex justify-between items-center flex-row">
-        <Image src={Cloud} className="w-6 mr-3 h-6 sm:h-9" alt="" />
-        <p className="block whitespace-nowrap text-sm text-darkBlue">
+      <li className="flex justify-between items-center flex-row gap-1">
+        <TiWeatherPartlySunny size={20} />
+        <p className="block whitespace-nowrap text-sm text-darkBlue font-bold">
           {Math.round(weather)} C°
         </p>
       </li>
-      <li className="flex justify-between items-center flex-row">
-        <Image src={Clock} className="w-6 mr-3 h-6 sm:h-9" alt="" />
-        <p className="block text-sm text-darkBlue">{currentTIme}</p>
+      <li className="flex justify-between items-center flex-row gap-1">
+        <FaRegClock size={20} />
+        <p className="block text-sm font-bold text-darkBlue">{currentTIme}</p>
       </li>
-      <li className="flex justify-between items-center flex-row">
-        <Image src={USD} className="w-au6-3 h-6 sm:h-9" alt="" />
-        <p className="block text-sm text-darkBlue">{Math.round(currency)}</p>
+      <li className="flex justify-between items-center flex-row gap-1">
+        <HiOutlineCurrencyDollar size={20} />
+        <p className="block text-sm text-darkBlue font-bold">
+          {Math.round(currency)}
+        </p>
       </li>
     </ul>
   );

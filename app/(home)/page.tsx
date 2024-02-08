@@ -28,11 +28,11 @@ export default function Home() {
     <>
       <div className=" w-full lg:h-screen h-[55vh] relative flex flex-col justify-center items-center overflow-hidden">
         <div className="background-image w-full h-full relative bg-[url('../public/samarkand-big.svg')] "></div>
-        <h1 className="h-full font-bold flex flex-col items-center text-white absolute justify-center ">
+        <h1 className="h-full font-bold flex flex-col items-center text-white absolute justify-center">
           <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:text-3xl text-l">
             ИССЛЕДУЙТЕ
           </span>
-          <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,1)] lg:p-5 lg:text-6xl text-[55px] lg:leading-[85%] text-yellow">
+          <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.75)] lg:p-5 lg:text-6xl text-[55px] lg:leading-[85%] text-yellow">
             УЗБЕКИСТАН
           </span>
           <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:text-3xl text-l">
@@ -40,7 +40,7 @@ export default function Home() {
           </span>
           <button
             onClick={() => setShowModal(true)}
-            className="mt-10 lg:mb-14 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-darkBlue bg-opacity-50 hover:bg-opacity-70 border-white border-[1px] px-6 py-3 rounded-md transition ease-in-out delay-150"
+            className="absolute bottom-5 mt-10 lg:mb-14 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-yellow bg-opacity-80 hover:bg-opacity-70 border-white border-[1px] px-6 py-3 rounded-md transition ease-in-out delay-150"
           >
             <p className="text-base font-thin lg:text-l text-white">
               Бронировать
@@ -58,7 +58,7 @@ export default function Home() {
               О НАС
             </div>
             <h1 className="leading-tight lg:text-2xl text-m text-darkBlue font-bold mb-5">
-              За организацию Вашего тура мы отвечаем головой
+              ЗА ОРГАНИЗАЦИЮ ВАШЕГО ТУРА МЫ ОТВЕЧАЕМ ГОЛОВОЙ
             </h1>
             <div className="text-base">
               Добро пожаловать в мир путешествий и приключений, где мы открываем
