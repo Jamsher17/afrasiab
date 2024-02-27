@@ -3,10 +3,16 @@ import { FormEvent } from "react";
 export const handleSubmit = async (event: FormEvent, formData: {}) => {
   event.preventDefault();
 
+  console.log(formData);
+
   try {
     const response = await fetch("/api/sendMail", {
       method: "post",
       body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
     });
 
     if (!response.ok) {

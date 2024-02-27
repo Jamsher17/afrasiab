@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 //service
 import { handleSubmit } from "./service/sendMail";
@@ -22,15 +22,27 @@ import {
 import { MdEmail } from "react-icons/md";
 
 //material ui
+import { MuiPhone } from "./components/MuiPhone";
 import {
-  FormControl,
   FormControlLabel,
   Radio,
   RadioGroup,
   TextField,
-  Box,
   Button,
 } from "@mui/material";
+
+//packages
+import { PhoneNumberUtil } from "google-libphonenumber";
+
+const phoneUtil = PhoneNumberUtil.getInstance();
+
+const isPhoneValid = (phone: string) => {
+  try {
+    return phoneUtil.isValidNumber(phoneUtil.parseAndKeepRawInput(phone));
+  } catch (error) {
+    return false;
+  }
+};
 
 type FormData = {
   name: string;
@@ -48,7 +60,20 @@ export default function Footer() {
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const checkForm = (e: FormEvent, formData: FormData) => {
+    if (formData.name && formData.phone) {
+      if (isPhoneValid(formData.phone) === false) {
+        alert("Пожалуйста, введите полный номер телефона с кодом страны");
+      } else handleSubmit(e, formData);
+    } else {
+      alert("Пожалуйста, заполните все поля");
+    }
   };
 
   return (
@@ -132,12 +157,11 @@ export default function Footer() {
             <p className="text-sm">
               Если хотите, чтобы мы связались с Вами, то оставьте номер телефона
             </p>
-            <form onSubmit={(e) => handleSubmit(e, formData)}>
+            <form onSubmit={(e) => checkForm(e, formData)}>
               <RadioGroup
                 row
-                aria-labelledby="demo-radio-buttons-group-label"
                 defaultValue="t"
-                name="radio-buttons-group"
+                name="contactMethod"
                 onChange={handleChange}
               >
                 <FormControlLabel
@@ -161,17 +185,16 @@ export default function Footer() {
                   name="name"
                   onChange={handleChange}
                 />
-                <TextField
-                  id="phone-input"
-                  label="Номер телефона"
-                  variant="outlined"
-                  margin="dense"
-                  type="tel"
-                  name="phone"
-                  onChange={handleChange}
+                <MuiPhone
+                  className="mt-2"
+                  value={formData.phone}
+                  onChange={(phone) => {
+                    setFormData({ ...formData, phone: phone });
+                  }}
                 />
               </div>
               <Button
+                className="mt-2"
                 variant="outlined"
                 type="submit"
                 size="large"

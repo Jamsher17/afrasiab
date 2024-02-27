@@ -12,6 +12,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import { TextField, Button } from "@mui/material";
 import { handleSubmit } from "../service/sendMail";
 import ContactModal from "../components/ContactModal";
+import { MuiPhone } from "../components/MuiPhone";
 
 type FormData = {
   name: string;
@@ -28,19 +29,20 @@ export default function Home() {
     <>
       <div className=" w-full lg:h-screen h-[55vh] relative flex flex-col justify-center items-center overflow-hidden">
         <div className="background-image w-full h-full relative bg-[url('/samarkand-big.jpg')] "></div>
-        <h1 className="h-full font-bold flex flex-col items-center text-white absolute justify-center">
+        <h1 className="h-full w-full font-bold flex flex-col items-center text-white absolute justify-center">
           <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:text-3xl text-l">
             ИССЛЕДУЙТЕ
           </span>
-          <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.75)] lg:p-5 lg:text-6xl text-[50px] lg:leading-[85%] text-yellow">
+          <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.75)] lg:p-5 lg:text-6xl text-[60px] lg:leading-[85%] text-yellow">
             УЗБЕКИСТАН
           </span>
           <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:text-3xl text-l">
             ВМЕСТЕ С НАМИ
           </span>
+
           <button
             onClick={() => setShowModal(true)}
-            className="absolute bottom-5 mt-10 lg:mb-14 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-yellow bg-opacity-80 hover:bg-opacity-70 border-white border-[1px] px-6 py-3 rounded-md transition ease-in-out delay-150"
+            className="mt-10 lg:mb-14 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] bg-yellow bg-opacity-80 hover:bg-opacity-70 border-white border-[1px] px-6 py-3 rounded-md transition ease-in-out delay-150"
           >
             <p className="text-base font-thin lg:text-l text-white">
               Бронировать
