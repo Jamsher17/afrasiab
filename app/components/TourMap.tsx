@@ -34,7 +34,6 @@ export type TourType = {
     info: string;
     schedule: {
       time: string;
-      title: string;
       activity: string;
     }[];
     images: StaticImageData;
@@ -112,7 +111,7 @@ export default function TourMap(tour: TourType) {
               <div className="flex xl:h-full w-full">
                 <Image
                   src={day.images}
-                  alt={sp.src}
+                  alt={day.images.src}
                   style={{ objectFit: "cover" }}
                   className="rounded-lg w-full h-full"
                 />
