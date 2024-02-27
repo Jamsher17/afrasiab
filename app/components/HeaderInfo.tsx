@@ -42,17 +42,19 @@ export default function HeaderInfo() {
     <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
       <li className="flex justify-between items-center flex-row gap-1">
         <TiWeatherPartlySunny size={20} />
-        <p className="block whitespace-nowrap text-sm text-darkBlue font-bold">
+        <p className="block whitespace-nowrap text-sm text-darkBlue font-body font-semibold">
           {Math.round(weather)} C°
         </p>
       </li>
       <li className="flex justify-between items-center flex-row gap-1">
         <FaRegClock size={20} />
-        <p className="block text-sm font-bold text-darkBlue">{currentTIme}</p>
+        <p className="block text-sm font-body font-semibold text-darkBlue">
+          {currentTIme}
+        </p>
       </li>
       <li className="flex justify-between items-center flex-row gap-1">
         <HiOutlineCurrencyDollar size={20} />
-        <p className="block text-sm text-darkBlue font-bold">
+        <p className="block text-sm text-darkBlue font-body font-semibold">
           {Math.round(currency)}
         </p>
       </li>

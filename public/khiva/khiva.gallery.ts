@@ -7,11 +7,11 @@ import img6 from "./Picture6.jpg";
 import img7 from "./Picture7.jpg";
 import img8 from "./Picture8.jpg";
 import img9 from "./Picture9.jpg";
-import img10 from "./Picture10.jpg";
-import img11 from "./Picture11.jpg";
-import img12 from "./Picture12.jpg";
-import img13 from "./Picture13.jpg";
-import img14 from "./Picture14.jpg";
+// import img10 from "./Picture10.jpg";
+// import img11 from "./Picture11.jpg";
+// import img12 from "./Picture12.jpg";
+// import img13 from "./Picture13.jpg";
+// import img14 from "./Picture14.jpg";
 
 export default [
   img1,
@@ -23,9 +23,9 @@ export default [
   img7,
   img8,
   img9,
-  img10,
-  img11,
-  img12,
-  img13,
-  img14,
+  // img10,
+  // img11,
+  // img12,
+  // img13,
+  // img14,
 ];

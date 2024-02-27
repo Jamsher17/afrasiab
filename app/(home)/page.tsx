@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <>
       <div className=" w-full lg:h-screen h-[55vh] relative flex flex-col justify-center items-center overflow-hidden">
-        <div className="background-image w-full h-full relative bg-[url('../public/samarkand-big.svg')] "></div>
+        <div className="background-image w-full h-full relative bg-[url('/samarkand-big.jpg')] "></div>
         <h1 className="h-full font-bold flex flex-col items-center text-white absolute justify-center">
           <span className="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.8)] lg:text-3xl text-l">
             ИССЛЕДУЙТЕ

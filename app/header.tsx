@@ -38,7 +38,7 @@ export function Header() {
                       }
                     : {}
                 }
-                className="block py-2 pr-4 pl-3 font-bold  text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
+                className="block py-2 pr-4 pl-3 font-body font-semibold  text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
                 aria-current="page"
               >
                 ГЛАВНАЯ
@@ -56,7 +56,7 @@ export function Header() {
                       }
                     : {}
                 }
-                className="block whitespace-nowrap font-bold  hover:text-darkBlue  py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
+                className="block whitespace-nowrap font-body font-semibold  hover:text-darkBlue  py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
               >
                 О НАС
               </Link>
@@ -73,7 +73,7 @@ export function Header() {
                       }
                     : {}
                 }
-                className="block whitespace-nowrap font-bold  hover:text-darkBlue py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
+                className="block whitespace-nowrap font-body font-semibold hover:text-darkBlue py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
               >
                 АВТОРСКИЕ ТУРЫ
               </Link>
@@ -90,7 +90,7 @@ export function Header() {
                       }
                     : {}
                 }
-                className="block hover:text-darkBlue font-bold py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
+                className="block hover:text-darkBlue font-body font-semibold py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
               >
                 ГОРОДА
               </Link>
@@ -124,7 +124,7 @@ export function Header() {
                       }
                     : {}
                 }
-                className="block hover:text-darkBlue font-bold py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
+                className="block hover:text-darkBlue font-body font-semibold py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 lg:border-0 lg:p-0 dark:text-gray-400"
               >
                 КОНТАКТЫ
               </Link>

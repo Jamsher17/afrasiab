@@ -3,7 +3,7 @@ import "./globals.css";
 import { Header } from "./header";
 import { Ubuntu } from "next/font/google";
 import ScrollToTop from "./components/ScrollToTop";
-// import Error from "./error";
+import { Providers } from "./providers";
 
 const ubuntu = Ubuntu({
   subsets: ["cyrillic-ext"],
@@ -25,10 +25,13 @@ export default function RootLayout({
     <html lang="en">
       <body className="text-darkBlue">
         <main className={ubuntu.className}>
-          <Header />
-          <ScrollToTop />
-          {/* <ErrorBoundary fallback={<Error />}> */}
-          <main className="bg-[#F6F6F6]">{children}</main>
+          <Providers>
+            <Header />
+            <ScrollToTop />
+            {/* <ErrorBoundary fallback={<Error />}> */}
+
+            <main className="bg-[#F6F6F6]">{children}</main>
+          </Providers>
           {/* </ErrorBoundary> */}
           <Footer />
         </main>

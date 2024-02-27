@@ -1,5 +1,5 @@
 import img1 from "./Picture1.jpg";
-import img2 from "./Picture2.jpg";
+// import img2 from "./Picture2.jpg";
 import img3 from "./Picture3.jpg";
 import img4 from "./Picture4.jpg";
 import img5 from "./Picture5.jpg";
@@ -12,7 +12,7 @@ import img11 from "./Picture11.jpg";
 
 export default [
   img1,
-  img2,
+  // img2,
   img3,
   img4,
   img5,
