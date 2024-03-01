@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"this_a_footer": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Non ad ex tempor incididunt dolore deserunt quis eiusmod officia sint."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

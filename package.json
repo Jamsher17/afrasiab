@@ -6,7 +6,8 @@
     "dev": "next dev -p 3002",
     "build": "next build",
     "start": "next start -p 3002",
-    "lint": "next lint"
+    "lint": "next lint",
+    "slicemachine": "start-slicemachine"
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
@@ -19,6 +20,9 @@
     "@mui/material": "^5.14.18",
     "@next/mdx": "^14.1.0",
     "@nextui-org/react": "^2.2.9",
+    "@prismicio/client": "^7.3.1",
+    "@prismicio/next": "^1.5.0",
+    "@prismicio/react": "^2.7.3",
     "@types/mdx": "^2.0.11",
     "@types/node": "18.14.6",
     "@types/react": "18.0.28",
@@ -43,9 +47,11 @@
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@slicemachine/adapter-next": "^0.3.36",
     "@types/google-libphonenumber": "^7.4.30",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
+    "slice-machine-ui": "^1.24.1",
     "tailwindcss": "^3.2.7"
   }
 }

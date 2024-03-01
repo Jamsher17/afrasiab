@@ -99,10 +99,10 @@ export default function TourMap(tour: TourType) {
       {Object.values(tour.days).map((day) => (
         <>
           <div className="flex flex-row w-full justify-between">
-            <div className="text-m xl:text-l font-normal">{day.location}</div>
             <div className="text-m xl:text-l font-light text-darkYellow">
               {day.name}
             </div>
+            <div className="text-m xl:text-l font-normal">{day.location}</div>
           </div>
           {/* image and info container */}
           <div className="flex flex-col xl:h-[400px] xl:flex-row space-y-2 xl:space-y-0 xl:space-x-2">
@@ -138,7 +138,11 @@ export default function TourMap(tour: TourType) {
                 children={
                   (day.info ? `${day.info}\n\n` : "") +
                   Object.values(day.schedule)
-                    .map((hour) => `[${hour.time}]:\n${hour.activity}`)
+                    .map((hour) => {
+                      return hour.time == "Конец дня"
+                        ? `${hour.activity}`
+                        : `${hour.time} - ${hour.activity}`;
+                    })
                     .join("\n\n")
                 }
               />
