@@ -4,6 +4,8 @@ const nextConfig = {
   pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
   experimental: {
     appDir: true,
+    esmExternals: "loose",
+    serverComponentsExternalPackages: ["mongoose"],
   },
 };
 

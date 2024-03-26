@@ -1,41 +1,41 @@
 import Image from "next/image";
 import Quote from "public/quote.svg";
 import Rating from "./Rating";
+import traveler from "public/man_traveler.jpg";
+import logo from "public/logo_alt.png";
 
-interface ReviewProps {
-  avatar: any;
-  client_name: string;
+export interface ReviewProps {
+  name: string;
   tour_name: string;
   rating: number;
   review: string;
 }
 
 export default function Review({
-  avatar,
-  client_name,
+  name,
   tour_name,
   rating,
   review,
 }: ReviewProps) {
   return (
     <>
-      <div className="static mb-8 flex flex-col items-center p-5">
+      <div className="whitespace-pre-wrap drop-shadow-md rounded-xl bg-blue-gray-50 h-[95%] w-full mb-8 flex flex-col items-center justify-center p-5">
         <Image
           src={Quote}
           alt=""
-          className="self-end absolute top-[0px] right-10"
+          className="self-end absolute top-[10px] right-10"
         />
         <Image
-          src={avatar}
+          src={logo}
           alt=""
-          className="border-0 rounded-full w-[100px]"
+          className="self-start absolute top-[10px] rounded-full w-[100px]"
         />
-        <h6 className="font-bold">{client_name}</h6>
-        <div>{tour_name}</div>
+        <h6 className="font-bold">{name}</h6>
+        <div>{tour_name == "Other" ? "" : tour_name}</div>
         <div>
           <Rating rating={rating} />
         </div>
-        <p className="text-sm">{review}</p>
+        <p className="text-sm text-ellipsis">{review}</p>
       </div>
     </>
   );

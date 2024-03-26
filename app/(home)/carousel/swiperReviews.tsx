@@ -42,9 +42,7 @@ export default function App() {
         <Swiper
           spaceBetween={3}
           grabCursor={true}
-          pagination={{
-            dynamicBullets: true,
-          }}
+          pagination={{ dynamicBullets: true }}
           modules={[EffectCards, Pagination]}
           className="mySwiper"
         >
