@@ -33,7 +33,7 @@ export default function Slider({ reviews }: { reviews: ReviewProps[] }) {
         }}
       >
         {reviews.map((review) => (
-          <SplideSlide className="overflow-visible">
+          <SplideSlide>
             <Review {...review} />
           </SplideSlide>
         ))}

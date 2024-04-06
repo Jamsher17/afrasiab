@@ -5,10 +5,15 @@ interface CityProps {
   id: number;
   image: any;
   title: string;
-  shot_description: string;
+  short_description: string;
 }
 
-export default function CityCard({ id, image, shot_description, title }: CityProps) {
+export default function CityCard({
+  id,
+  image,
+  short_description,
+  title,
+}: CityProps) {
   return (
     <div className="justify-center max-w-[320px] min-w-[320px] h-[342px] border-0 bg-white border-white rounded-2xl shadow-[0px_1px_4px_rgba(0,0,0,0.5)]">
       <Link href={`/cities/${id}`}>
@@ -19,7 +24,7 @@ export default function CityCard({ id, image, shot_description, title }: CityPro
         />
         <div className="py-2 px-5 h-[122px] flex flex-col">
           <p className="text-base text-center font-bold">{title}</p>
-          <p className="text-sm text-center">{shot_description}</p>
+          <p className="text-sm text-center">{short_description}</p>
         </div>
       </Link>
     </div>
